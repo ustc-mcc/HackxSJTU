@@ -1,2 +1,4 @@
 *.flv
 *.mp4
+*.swp
+*.pyc

@@ -2,6 +2,7 @@
 
 import cv2
 import os
+import sys
 
 def video2frame(videolist):
 	if not os.path.exist(videolist):
@@ -12,23 +13,27 @@ def video2frame(videolist):
 			sline = line.split(' ')
 
 def video2frame_single(filename, srcroot, dstroot):
-	if not os.path.exist(filename):
+	srcroot_filename = os.path.join(srcroot, filename)
+	if not os.path.exists(srcroot_filename):
 		print "Error. Video file does not exist!"
-		exit()
-	vc = cv2.VideoCapture(os.path.join(srcroot, filename))
+		sys.exit()
+	vc = cv2.VideoCapture(srcroot_filename)
 	if not vc.isOpened():
-		print "Can not open this video named" + filename
-		exit()
+		print "Can not open this video named " + srcroot_filename
+		sys.exit()
 	notEnd = True
 	frmIdx = 0
 	dstroot_filename = os.path.join(dstroot, filename)
-	if not os.path.exits(dstroot_filename:
+	if not os.path.exists(dstroot_filename):
 		os.mkdir(dstroot_filename)
 
-	wihle notEnd:
+	while notEnd:
 		notEnd, frame = cv.read()
 		frmName = os.path.join(dstroot_filename, "%06d.jpg" % frmIdx)
 		cv.imwrite(frmName, frame)
 		frmIdx += 1
 	vc.release
 
+
+if __name__ == '__main__':
+    video2frame_single('sr_video_data/1-low.mp4', '../data', '../data')
