@@ -43,4 +43,4 @@ def video2frame_ffmpeg(video_path, frm_save_path):
 
 if __name__ == '__main__':
     #video2frame_single('sr_video_data/1-low.mp4', '../data', '../data')
-    video2frame_ffmpeg('/home/yunfeng/tmp/1-low.mp4', '/home/yunfeng/tmp/1/low')
+    video2frame_ffmpeg('/data2/sr_video_data/1-low.mp4', '/data2/sr_frm/1/low')
