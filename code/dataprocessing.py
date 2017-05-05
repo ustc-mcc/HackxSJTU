@@ -3,6 +3,7 @@
 import cv2
 import os
 import sys
+import subprocess
 
 def video2frame(videolist):
 	if not os.path.exist(videolist):
@@ -34,6 +35,12 @@ def video2frame_single(filename, srcroot, dstroot):
 		frmIdx += 1
 	vc.release
 
+def video2frame_ffmpeg(video_path, frm_save_path):
+	# ffmpeg usage: ffmpeg -i /path/to/video.mp4 /path/to/frame/%06d.jpg
+	subprocess.call(['ffmpeg', '-i', video_path, frm_save_path+"/%06d.jpg"])
+	
+	
 
 if __name__ == '__main__':
-    video2frame_single('sr_video_data/1-low.mp4', '../data', '../data')
+    #video2frame_single('sr_video_data/1-low.mp4', '../data', '../data')
+    video2frame_ffmpeg('/home/yunfeng/tmp/1-low.mp4', '/home/yunfeng/tmp/1/low')
